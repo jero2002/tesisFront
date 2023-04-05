@@ -1,0 +1,44 @@
+<br>
+<br>
+<br>
+<div class="container ">
+    <div class="row ">
+        <div class="col-2 col-xl-4 col-lg-4 col-md-3 col-sm-2 "></div>
+        <div class="col-8 col-xl-4 col-lg-4 col-md-6 col-sm-8 rounded-4  shadow-lg letraside">
+            <div class="row ">
+                <div class="col-12 ">
+                    <form [formGroup]="loginForm" (ngSubmit)="login()">
+                        <h1 class="text-center py-2 ">Login</h1>
+                        <hr />
+                        <div class="mb-4 form-group ">
+                            <label class="form-label ">Correo Electrónico</label>
+                            <input type="email" class="form-control " name="email" formControlName="email" [class.red-icon]="this.loginForm.get( 'email')?.invalid " />
+                        </div>
+                        <div class="mb-4 form-group ">
+                            <label class="form-label ">Contraseña</label><span type="button" matTooltip="Ver/Ocultar contraseña" matTooltipPosition="right" class="eyeIcon " style="padding-left: 5px; " (click)="viewpass() "><i
+                                [ngClass]="visible? 'fa-solid fa-eye': 'fa-solid fa-eye-slash'" ></i></span>
+
+                            <input [type]="changeType? 'password': 'text' " class="form-control" name="contrasenia" formControlName="contrasenia" [class.red-icon]="this.loginForm.get( 'contrasenia')?.invalid " />
+                        </div>
+                        <div class="d-grid ">
+                            <button type="submit " class="btn btnLogin " [disabled]="loginForm.invalid ">Iniciar
+                                sesión</button>
+                        </div>
+                    </form>
+                    <div class="d-grid py-2 ">
+                        <button class="btn btnLogin " style="width: 60%; margin-left: 20%;" (click)="registrarse()">Registrarse</button>
+                    </div>
+
+
+                    <div class="row ">
+                        <div class="d-flex mt-2 justify-content-center" matTooltip="Volver" [matTooltipShowDelay]="1100">
+                            <i class="fa-solid fa-arrow-left flecha " routerLink="" type="button"></i>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="col-2 col-xl-4 col-lg-4 col-md-3 col-sm-2 "></div>
+    </div>
+</div>

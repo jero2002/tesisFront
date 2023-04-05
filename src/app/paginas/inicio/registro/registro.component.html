@@ -1,0 +1,62 @@
+<br>
+<br>
+<br>
+<div class="container col-md-6 rounded-4 shadow-lg">
+    <form class="container" [formGroup]="form" (ngSubmit)="validar()">
+        <h1 class="text-center py-2 letraparah1">Registro</h1>
+        <hr />
+        <div class="row py-2">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">Correo Electrónico</label>
+                    <input type="email" class="form-control" name="email" formControlName="email" [class.red-icon]="this.form.get('email')?.invalid" />
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                <div class="form-group">
+                    <label>Nombre De Usuario</label>
+                    <input type="text" class="form-control" name="nombre" formControlName="nombre" [class.red-icon]="this.form.get('nombre')?.invalid" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row py-2">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">Contraseña</label> <span matTooltip="Ver/Ocultar contraseña" matTooltipPosition="right" type="button" class="eyeIcon" style="padding-left: 5px;" (click)="viewpass()"><i
+                        [ngClass]="visible?'fa-solid fa-eye':'fa-solid fa-eye-slash'"></i></span>
+                    <input [type]="changeType?'password':'text'" class="form-control" name="contrasenia" formControlName="contrasenia" [class.red-icon]="this.form.get('contrasenia')?.invalid" />
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Confirmar Contraseña</label> <span matTooltip="Ver/Ocultar contraseña" matTooltipPosition="right" type="button" class="eyeIcon" style="padding-left: 5px;" (click)="viewpass()"><i
+                        [ngClass]="visible?'fa-solid fa-eye':'fa-solid fa-eye-slash'" ></i></span>
+                    <input [type]="changeType?'password':'text'" class="form-control" name="contraseniaC" formControlName="contraseniaC" [class.red-icon]=" this.form.get('contraseniaC')?.invalid" />
+                </div>
+            </div>
+        </div>
+        <div class="row text-center">
+            <label>
+        <input type="checkbox" formControlName="terminos"  name="terminos" id="terminos">
+        Estoy de acuerdo con la <a href="paginas/politicas">Politica de privacidad</a> y los <a href="paginas/terminosycondiciones">términos y condiciones</a>
+      </label>
+
+            <div class="d-grid py-2 " style="width: 80%; margin-left: 9%;">
+                <button [disabled]="form.invalid" class="btn btnLogin" type="submit">Crear
+                    cuenta</button>
+            </div>
+            <div class="d-grid py-2" style="width: 50%; margin-left: 25%;">
+                <button type="button" class="btn btnLogin" routerLink="/paginas/login">Ya tengo
+                    cuenta</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="d-flex mt-2 justify-content-center" matTooltip="Volver" [matTooltipShowDelay]="1100">
+                <i class="fa-solid fa-arrow-left flecha" routerLink="" type="button"></i>
+            </div>
+        </div>
+        <br>
+    </form>
+</div>

@@ -1,0 +1,72 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.example-is-mobile .example-toolbar {
+    position: fixed;
+    z-index: 2;
+}
+
+.example-sidenav-container {
+    flex: 1;
+}
+
+.example-is-mobile .example-sidenav-container {
+    flex: 1 0 auto;
+}
+
+.icono {
+    color: rgb(255, 255, 255);
+}
+
+.icono:hover {
+    transform: scale(1.1);
+}
+
+.iconored {
+    color: rgb(213, 30, 30);
+}
+
+.iconored:hover {
+    color: rgb(208, 59, 59);
+}
+
+.inner-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+mat-sidenav {
+    width: 15vw;
+}
+
+.sizeTitulo {
+    font-size: 30px;
+    animation: moveTitle 3s ease-in-out infinite;
+}
+
+@keyframes moveTitle {
+    0% {
+        transform: translateX(-2px);
+    }
+    50% {
+        transform: translateX(2px);
+    }
+    100% {
+        transform: translateX(-2px);
+    }
+}
+
+.profile-image {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}

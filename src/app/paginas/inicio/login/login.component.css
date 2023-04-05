@@ -1,0 +1,7 @@
+.flecha {
+    color: white;
+}
+
+.flecha:hover {
+    color: #a371aa;
+}
