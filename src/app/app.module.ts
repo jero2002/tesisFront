@@ -33,6 +33,11 @@ import { PoliticasComponent } from './paginas/formalidades/politicas/politicas.c
 import { ContactoComponent } from './paginas/formalidades/contacto/contacto.component';
 import { CrearperfiljComponent } from './paginas/crearperfilj/crearperfilj.component';
 import { CrearperfilcComponent } from './paginas/crearperfilc/crearperfilc.component';
+import { AuthService } from './servicios/auth.service';
+import { CjugadorequipoComponent } from './paginas/cjugadorequipo/cjugadorequipo.component';
+import { CequipojugadorComponent } from './paginas/cequipojugador/cequipojugador.component';
+import {MatCardModule} from '@angular/material/card';
+
 
 
 
@@ -60,6 +65,9 @@ export function tokenGetter() {
     ContactoComponent,
     CrearperfiljComponent,
     CrearperfilcComponent,
+    CjugadorequipoComponent,
+    CequipojugadorComponent,
+
 
 
   ],
@@ -76,16 +84,17 @@ export function tokenGetter() {
     HttpClientModule,
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     MatTooltipModule,
+    MatCardModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ['localhost:44353'],   //wtf con esto
-        disallowedRoutes: ['localhost:44353/api/security']
+        allowedDomains: ['https://localhost:7095', 'http://localhost:5289'],   //wtf con esto
+        disallowedRoutes: ['https://localhost:7095/api/Login/PostLogin','https://localhost:7095/api/Register/PostRegister', 'http://localhost:5289/api/Login/PostLogin','http://localhost:5289/api/Login/PostLogin']
       }
     }),
     
   ],
-  providers: [ LoginService, { provide: LOCALE_ID, useValue: 'es-AR' }],
+  providers: [ LoginService,AuthService, { provide: LOCALE_ID, useValue: 'es-AR' }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

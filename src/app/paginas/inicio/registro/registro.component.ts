@@ -40,8 +40,9 @@ export class RegistroComponent implements OnInit {
     });
   }
   ngOnInit(): void {
- console.log("registrar");
+
   }
+  
 
   agregar() {
     this.spinner.show();
@@ -57,8 +58,7 @@ export class RegistroComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Cuidado...',
-          confirmButtonColor: 'linear-gradient(to bottom right, #51085c, rgb(35, 34, 34))',
-          text: data.error,
+          text: data.error,   
         });
       } else {
         this.spinner.hide();
@@ -66,7 +66,6 @@ export class RegistroComponent implements OnInit {
           icon: 'success',
           title: 'Perfecto...',
           text: 'Se registró con éxito',
-          confirmButtonColor: 'linear-gradient(to bottom right, #51085c, rgb(35, 34, 34))'
         }).then(() => { 
          this.router.navigate(["paginas/login"]);
         });

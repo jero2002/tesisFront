@@ -1,0 +1,29 @@
+.example-card {
+    background: #7e3388;
+}
+
+.example-header-image {
+    background-image: url('https://res.cloudinary.com/dfyevp7g4/image/upload/v1681768584/1467646262_522853_1467646344_noticia_normal_qer7cq.jpg');
+    background-size: cover;
+}
+
+.custom-shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Ajustar los valores según tus preferencias de sombreado */
+}
+
+.ojo {
+    color: rgb(25, 25, 177);
+}
+
+.ojo:hover {
+    color: rgb(40, 40, 189);
+}
+
+.enviar {
+    color: rgb(22, 151, 22);
+}
+
+.enviar:hover {
+    color: rgb(50, 181, 50);
+}

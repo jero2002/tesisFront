@@ -1,18 +1,18 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="isloggedIn">
-    <mat-toolbar class="example-toolbar  fondo-sidebar">
-        <i class="fa-solid fa-bars sidecolor" type="button" (click)="snav.toggle(); isRotated = !isRotated" [ngClass]="{'rotated': isRotated}"></i>
+    <mat-toolbar class="example-toolbar  fondo-sidebar" *ngIf="this.userHasRole([1,2])">
+        <i class="fa-solid fa-bars sidecolor" type="button" (click)="snav.toggle();"></i>
         <div class="col">
         </div>
         <div class="col">
         </div>
         <a>
-            <h1 [@fadeinout]="'in'" routerLink="paginas/principal" type="button" class="sidecolor sizeTitulo" style="text-shadow: 1px 1px 1px rgba(0,0,0,0.3);">DreamTeam</h1>
+            <img [@fadeinout]="'in'" src="https://res.cloudinary.com/dfyevp7g4/image/upload/v1681244051/LOGO_dl7jyu.png" alt="Logo" class="mt-2 logo-image logoAnimation">
         </a>
         <div class="col">
         </div>
         <div class="col">
         </div>
-        <a routerLink="paginas/perfil" *ngIf="this.userHasRole([1,2])">
+        <a routerLink="paginas/perfil">
             <img class="icono profile-image">
         </a>
     </mat-toolbar>

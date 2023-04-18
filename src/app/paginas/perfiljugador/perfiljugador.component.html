@@ -1,0 +1,99 @@
+<div class="container">
+    <div class="jumbtron">
+        <div class="row">
+            <div class="col-md-7 py-5">
+                <h6 class="text-center ">
+                    Modificar Jugador
+                </h6>
+                <hr>
+                <div class="card cardP " style="border-radius: 10px;">
+                    <form class="container" [formGroup]="form" (ngSubmit)="actualizarJugador()">
+                        <div class="row ">
+                            <div class="col-md-6 ">
+                                <div class="form-group py-2 ">
+                                    <label for=" ">Nombre</label>
+                                    <input type="nombre " class="form-control" name="nombre" formControlName="nombre" [class.red-icon]="this.form.get('nombre')?.invalid" />
+                                </div>
+
+                                <div class="form-group py-2 ">
+                                    <label for=" ">Celular</label> <i [matTooltipPosition]=" 'above'" matTooltip="Primero ingrese la caracteristica sin '0' inicial y luego tu numero de celular" [matTooltipShowDelay]="700" type="button" style="margin-left:
+                    4px; color: #920AA6;" class="fa-solid fa-circle-info "></i>
+                                    <input type="celular " class="form-control" name="celular" formControlName="celular" [class.red-icon]="this.form.get( 'celular')?.invalid " />
+                                </div>
+
+                                <div class="form-group py-2 ">
+                                    <label for=" ">Edad</label>
+                                    <input type="tg " class="form-control " name="edad" formControlName="edad" [class.red-icon]="this.form.get( 'edad')?.invalid " />
+                                </div>
+
+                                <div class="form-group py-2" style="position: relative;">
+                                    <label for="">Descripción</label>
+                                    <div style="position: relative;">
+                                        <input style="background-size: 50%;" type="descripcion" class="form-control" name="descripcion" formControlName="descripcion" [class.red-icon]="form.get('descripcion')?.invalid" />
+                                        <div style="position: absolute; top: 0; right: 0;  display: flex; align-items: center; color: grey; content:'';  margin-top: 8px; margin-right: 5px;background-color: rgb(255, 255, 255);">
+                                            <div style="width: 60px;">{{form.get('descripcion')?.value ? form.get('descripcion')?.value.length : 0}} / 30</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 ">
+
+                                <div class="form-group py-2 ">
+                                    <label for=" ">Posición</label>
+                                    <select class="form-control" formControlName="idPosicion" [class.red-icon]="this.form.get( 'idPosicion')?.invalid ">
+                                  <option value=" " selected disabled>Selecciona una opción...</option>
+                                  <option *ngFor="let item of posicion " [value]="item.idPosicion ">{{item.nombre}}</option>      
+                                </select>
+                                </div>
+
+                                <div class="form-group py-2 ">
+                                    <label for=" ">Estado</label>
+                                    <select class="form-control" formControlName="idEstadoJ" [class.red-icon]="this.form.get( 'idEstadoJ')?.invalid ">
+                                  <option value=" " selected disabled>Selecciona una opción...</option>
+                                  <option *ngFor="let item of estadoj " [value]="item.idEstadoJ ">{{item.nombre}}</option>
+                                </select>
+                                </div>
+
+
+                                <div class="form-group py-2 ">
+                                    <label for=" ">Provincia</label>
+                                    <select class="form-control" formControlName="idProvincia" [class.red-icon]="this.form.get( 'idProvincia')?.invalid ">
+                                  <option value=" " selected disabled>Selecciona una opción...</option>
+                                  <option *ngFor="let item of provincia " [value]="item.idProvincia ">{{item.nombre}}</option>
+                                </select>
+                                </div>
+
+                                <div class="form-group py-2 ">
+                                    <label for=" ">Genero</label>
+                                    <select class="form-control " formControlName="idGenero" [class.red-icon]="this.form.get( 'idGeneroE')?.invalid ">
+                                  <option value=" " selected disabled>Selecciona una opción...</option>
+                                  <option *ngFor="let item of genero " [value]="item.idGenero ">{{item.nombre}}</option>
+                                </select>
+                                </div>
+
+
+                            </div>
+                            <div class="d-flex align-items-center py-2 " style="width: 50%; margin-left: 30%; ">
+                                <div class="d-flex align-items-center " style="width: 80%; ">
+                                    <button [disabled]="form.invalid" class="btn btnLogin flex-grow-1" type="submit">Modificar Jugador</button>
+                                    <i class="fa-solid fa-trash iconored " type="button" (click)="limpiarInputs()" id=" " style="margin-left: 10% " [matTooltipPosition]=" 'below' " matTooltip="Limpiar campos " [matTooltipShowDelay]="700 "></i>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <div class="col-md-5 py-5 ">
+                <h6 class="text-center ">
+                    Listado de Equipos
+                </h6>
+                <hr>
+                <div class="card cardP " style="border-radius: 10px;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="container py-5">
+    <div class="row">
+        <h4 class="text-center">
+            JUGADORES
+            <i [matTooltipPosition]="'right'" style="margin-left: 4px; color: #920AA6;" matTooltip="Este listado mostrará únicamente a los jugadores que estén buscando equipos y, además, filtra por género para que solo aparezcan los jugadores que sean aceptados por tu equipo."
+                [matTooltipShowDelay]="500" type="button" class="fa-solid fa-circle-info"></i>
+        </h4>
+        <hr>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 py-2" *ngFor="let jugador of jugadores">
+                    <mat-card class="example-card  " style="border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);">
+                        <!-- Agregar la clase "shadow" para aplicar el efecto de sombreado -->
+                        <mat-card-header>
+                            <div mat-card-avatar class="example-header-image"></div>
+                            <mat-card-title> <strong>{{ jugador.nombre }}</strong> - {{ jugador.edad }}</mat-card-title>
+                            <mat-card-subtitle style="color: black; ">{{ jugador.idPosicionNavigation.nombre }} / {{jugador.idGeneroNavigation.nombre}} / {{jugador.idProvinciaNavigation.nombre}}</mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p>
+                                {{ jugador.descripcion }}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-actions class="icon-container" style="margin-left: 75%;">
+                            <i matTooltip="Mas detalles" [matTooltipShowDelay]="1100" type="button" class="fa-solid fa-eye ojo"></i>
+                            <i matTooltip="Enviar solicitud" [matTooltipShowDelay]="1100" type="button" class="fa-solid fa-paper-plane enviar" style="margin-left: 15%;"></i>
+                            <!-- Acciones (Solicitud , enviar) -->
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

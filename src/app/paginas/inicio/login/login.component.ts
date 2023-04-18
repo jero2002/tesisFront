@@ -36,8 +36,7 @@ export class LoginComponent implements OnInit{
   }
 
   ngOnDestroy(): void {
-    this.Subscription.unsubscribe();
-  
+    this.Subscription.unsubscribe();  // no se necesita 
   }
 
   registrarse() {
@@ -60,14 +59,13 @@ export class LoginComponent implements OnInit{
       error: "",
       codigoEstado: 1
     };
-    console.log(login);
+ 
     this.Subscription.add(
       this.api.postLogin(login).subscribe(next => {
         this.spinner.hide();
         Swal.fire({
           icon: 'success',
           title: `Bienvenido`,
-          confirmButtonColor: 'linear-gradient(to bottom right, #51085c, rgb(35, 34, 34))',
           text: 'Sesión Iniciada...',
           timer: 5000
         }).then(x => {
@@ -86,8 +84,7 @@ export class LoginComponent implements OnInit{
         Swal.fire({
           icon: 'error',
           title: 'Ups!',
-          text: 'Contraseña o Email incorrectos',
-          confirmButtonColor: 'linear-gradient(to bottom right, #51085c, rgb(35, 34, 34))'
+          text: 'Contraseña o Email incorrectos'
         });
       })
     );

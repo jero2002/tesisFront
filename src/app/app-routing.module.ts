@@ -16,6 +16,8 @@ import { PoliticasComponent } from './paginas/formalidades/politicas/politicas.c
 import { ContactoComponent } from './paginas/formalidades/contacto/contacto.component';
 import { CrearperfiljComponent } from './paginas/crearperfilj/crearperfilj.component';
 import { CrearperfilcComponent } from './paginas/crearperfilc/crearperfilc.component';
+import { CequipojugadorComponent } from './paginas/cequipojugador/cequipojugador.component';
+import { CjugadorequipoComponent } from './paginas/cjugadorequipo/cjugadorequipo.component';
 
 
 const routes: Routes = [
@@ -28,10 +30,12 @@ const routes: Routes = [
   { path: 'paginas/principal', component: PrincipalComponent, canActivate: [GuardAuthGuard], data: { roles: [1,2] } },
   { path: 'paginas/conectar', component: ConectarComponent, canActivate: [GuardAuthGuard], data: { roles: [2] } },
   { path: 'paginas/perfil', component: PerfilComponent , canActivate: [GuardAuthGuard], data: { roles: [1,2] } },
-  { path: 'paginas/perfilequipo', component: PerfilequipoComponent  , canActivate: [GuardAuthGuard], data: { roles: [2] } },
+  { path: 'paginas/perfilequipo/:id', component: PerfilequipoComponent  , canActivate: [GuardAuthGuard], data: { roles: [2] } },
+  { path: 'paginas/perfiljugador/:id', component: PerfiljugadorComponent  , canActivate: [GuardAuthGuard], data: { roles: [2] } },
   { path: 'paginas/crearperfilJ', component: CrearperfiljComponent , canActivate: [GuardAuthGuard], data: { roles: [2] } },
   { path: 'paginas/crearperfilC', component: CrearperfilcComponent , canActivate: [GuardAuthGuard], data: { roles: [2] } },
-  { path: 'paginas/perfiljugador', component: PerfiljugadorComponent  , canActivate: [GuardAuthGuard], data: { roles: [2] } },
+  { path: 'paginas/cequipojugador', component: CequipojugadorComponent , canActivate: [GuardAuthGuard], data: { roles: [2] } },
+  { path: 'paginas/cjugadorequipo', component: CjugadorequipoComponent , canActivate: [GuardAuthGuard], data: { roles: [2] } },
   { path: 'paginas/solicitud', component: SolicitudComponent , canActivate: [GuardAuthGuard], data: { roles: [2] } },
   { path: 'paginas/reporte', component: ReportesComponent, canActivate: [GuardAuthGuard], data: { roles: [1] } },
   { path: '**', component: MenuComponent }

@@ -1,0 +1,11 @@
+.cardP {
+    background: #4a0654;
+}
+
+.iconored {
+    color: rgb(213, 30, 30);
+}
+
+.iconored:hover {
+    color: rgb(208, 59, 59);
+}

@@ -47,8 +47,12 @@ mat-sidenav {
     width: 15vw;
 }
 
-.sizeTitulo {
-    font-size: 30px;
+.logo-image {
+    max-width: 200px;
+    max-height: 100px;
+}
+
+.logoAnimation {
     animation: moveTitle 3s ease-in-out infinite;
 }
 

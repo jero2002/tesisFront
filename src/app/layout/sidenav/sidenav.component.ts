@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 
 import { LoginService } from 'src/app/servicios/login.service';
@@ -11,7 +11,7 @@ import {
 } from '@angular/animations';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-
+import { AuthService } from 'src/app/servicios/auth.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -27,7 +27,7 @@ import { Subscription } from 'rxjs';
 })
 export class SidenavComponent implements OnInit {
   isRotated: boolean = false;
-  isloggedIn:boolean=false;
+  isloggedIn: boolean = false;
   private Subscription = new Subscription();
   mobileQuery: MediaQueryList;
 
@@ -38,50 +38,72 @@ export class SidenavComponent implements OnInit {
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
     private route: Router,
-    
+    private authService: AuthService
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+
+   
+  }
+
+
+
+  ngOnInit(): void {
+    this.Subscription.add(
+      this.loginService.isLoggedIn.subscribe((data) => {
+        this.isloggedIn = data;
+        setTimeout(() => {
+          this.authService.isLoggedIn.subscribe(
+            (data) => {
+              this.isloggedIn = data;
+            },
+            (error) => {
+              console.log('Error:', error);
+            }
+          );
+        });
+      })
+    );
   }
 
   ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
-      this.Subscription.unsubscribe();
-      
+    this.mobileQuery.removeEventListener('change', this._mobileQueryListener);
+    this.Subscription.unsubscribe();
   }
 
-  ngOnInit(): void {
-  this.loginService.isLoggedIn.subscribe(data => this.isloggedIn = data  );
+  onLogout(): void {
+    this.authService.logout();
   }
 
+  
   userHasRole(roles: number[]): boolean {
     return this.loginService.checkUseHasRole(roles);
   }
 
   desloguear(): void {
     this.loginService.desloguearUsuario();
-
-    
-
- /*  setTimeout(() => {
     this.route.navigate(['/paginas/login']);
-    }, 1000); */
+ 
   }
 
   Vperfiljugador() {
-    if (this.loginService.getIdJugador()?.idJugador !== null) {
-      this.route.navigate(['/paginas/perfiljugador']);
+    const idJugador = this.loginService.getIdJugador()?.idJugador;
+    if (idJugador !== null) {
+      this.route.navigate([`/paginas/perfiljugador/${idJugador}`]);
     } else {
       this.route.navigate(['/paginas/crearperfilJ']);
     }
   }
+  
 
-  Vperfilequipo() {
-    if (this.loginService.getIdJugador()?.idEquipo !== null) {
-      this.route.navigate(['/paginas/perfilequipo']);
-    } else {
-      this.route.navigate(['/paginas/crearperfilC']);
-    }
+Vperfilequipo() {
+  const idEquipo = this.loginService.getIdJugador()?.idEquipo;
+  if (idEquipo !== null) {
+    this.route.navigate([`/paginas/perfilequipo/${idEquipo}`]);
+  } else {
+    this.route.navigate(['/paginas/crearperfilC']);
   }
+}
+
 }

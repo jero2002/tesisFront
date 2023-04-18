@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environments';
-import { Usuario, UsuarioDTO } from '../models/i-usuario';
+import { Usuario, UsuarioDTOUpdate } from '../models/i-usuario';
 
 
 
@@ -24,7 +24,7 @@ export class RegistoService {
     return this.http.post(this.urlBase + "Register/PostRegister", u, { headers: this.headers });
   }
 
-  PutUsuario(usuario: UsuarioDTO): Observable<any> {
+  PutUsuario(usuario: UsuarioDTOUpdate): Observable<any> {
     return this.http.put(this.urlBase + "Register/PutUsuario", usuario, { headers: this.headers });
   }
 }
