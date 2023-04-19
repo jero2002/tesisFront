@@ -12,6 +12,7 @@ import {
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/servicios/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sidenav',
@@ -82,10 +83,23 @@ export class SidenavComponent implements OnInit {
   }
 
   desloguear(): void {
-    this.loginService.desloguearUsuario();
-    this.route.navigate(['/paginas/login']);
- 
-  }
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Estás a punto de cerrar sesión.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, cerrar sesión',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.value) {
+        this.loginService.desloguearUsuario();
+        this.route.navigate(['/paginas/login']);
+      }
+    });
+}
+
 
   Vperfiljugador() {
     const idJugador = this.loginService.getIdJugador()?.idJugador;

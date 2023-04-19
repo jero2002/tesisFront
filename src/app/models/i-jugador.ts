@@ -35,7 +35,7 @@ export interface DTOJugadorByGenero{
     idPosicion: number,
     idEstadoJ: number,
     idProvincia: number,
-    idGenero: number
+    idGenero: number,
     idEstadoJNavigation: Estadoj,
     idGeneroNavigation:Genero,
     idPosicionNavigation: Posicion,

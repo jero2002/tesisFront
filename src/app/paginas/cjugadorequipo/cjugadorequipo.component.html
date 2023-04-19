@@ -1,1 +1,79 @@
-<p>cjugadorequipo works!</p>
+<div class="container py-5">
+    <div class="row">
+        <h4 class="text-center">
+            EQUIPOS
+            <i [matTooltipPosition]="'right'" style="margin-left: 4px; color: #920AA6;" matTooltip="Este listado mostrará únicamente a los equipos que estén buscando jugadores y, además, filtra por género para que solo aparezcan los equipos que te acepten por tu genero."
+                [matTooltipShowDelay]="500" type="button" class="fa-solid fa-circle-info"></i>
+        </h4>
+        <hr>
+        <div style="align-items: center; display: flex;">
+            <input style="width: 97%; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);" type="text" placeholder="Ingrese su filtro..." class="form-control" (input)="filtrarEquipo($event)">
+            <i [matTooltipPosition]="'above'" style="color: #920AA6; margin-left: 5px; font-size: 25px;" matTooltip="Puedes filtrar por: Nombre, Provincia, Entrenador y Torneos Ganados." [matTooltipShowDelay]="500" type="button" class="fa-solid fa-circle-question"></i>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 py-3" *ngFor="let equipo of equipos">
+                    <mat-card class="example-card  " style="border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);">
+                        <!-- Agregar la clase "shadow" para aplicar el efecto de sombreado -->
+                        <mat-card-header>
+                            <div mat-card-avatar class="example-header-image"></div>
+                            <mat-card-title> {{ equipo.nombre }}</mat-card-title>
+                            <mat-card-subtitle style="color: black; ">{{equipo.idGeneroENavigation.nombre}} / {{equipo.idProvinciaNavigation.nombre}}</mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p class="py-2">
+                                <strong>Entrenador:</strong> {{ equipo.entrenador }}<br>
+                                <strong>Torneos Ganados:</strong> {{ equipo.torneoGanado }}
+                            </p>
+
+
+
+
+
+                        </mat-card-content>
+                        <mat-card-actions class="icon-container" style="margin-left: 75%;">
+                            <button data-bs-toggle="modal" data-bs-target="#jugadorModal" data-bs-whatever="@mdo" #abrirModeljugadorBtn hidden="true"></button>
+                            <i (click)="Mostrar(equipo.idEquipo)" matTooltip="Mas detalles" [matTooltipShowDelay]="1100" type="button" class="fa-solid fa-eye ojo"></i>
+                            <i matTooltip="Enviar solicitud" [matTooltipShowDelay]="1100" type="button" class="fa-solid fa-paper-plane enviar" style="margin-left: 15%;"></i>
+                            <!-- Acciones (Solicitud , enviar) -->
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="jugadorModal" aria-labelledby="jugadorModalLabel" role="dialog">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-rounded-4" style="margin: 30px;">
+                <div class="modal-header d-flex justify-content-between">
+                    <!-- Usamos la clase d-flex para aplicar flexbox y justify-content-between para separar los iconos -->
+                    <h5 id="jugadorModalLabel">Contacto: <strong>{{equipo.nombre}}</strong></h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="d-flex">
+                            <!-- Creamos un contenedor flex para los iconos -->
+                            <a matTooltip="Llamar" [matTooltipShowDelay]="1100" href="tel:{{equipo.celular}}" style="font-size: 25px; margin:auto">
+                                <i type="button" class="fa-solid fa-phone enviar"></i>
+                            </a>
+                            <!-- Ajustamos el tamaño del icono y agregamos margen derecho para separarlos -->
+                            <a matTooltip="Enviar mensaje por whatsapp" [matTooltipShowDelay]="1100" href="https://wa.me/{{equipo.celular}}?text=Hola!%20Me%20gustar%C3%ADa%20entrar%20en%20el%20equipo" style="font-size: 35px; margin: auto;">
+                                <i type="button" class="fa-brands fa-whatsapp enviar"></i>
+                            </a>
+                            <!-- Ajustamos el tamaño del icono -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

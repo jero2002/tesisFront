@@ -27,3 +27,8 @@
 .enviar:hover {
     color: rgb(50, 181, 50);
 }
+
+.modal-content {
+    background: linear-gradient(to bottom right, #540260, #323132);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
