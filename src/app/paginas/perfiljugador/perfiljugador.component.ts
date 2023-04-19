@@ -93,7 +93,7 @@ export class PerfiljugadorComponent {
   
   
   
-
+/*  */
 
   CargarSelects() {
     this.jugadorservice.GetEstadoJ().subscribe({
