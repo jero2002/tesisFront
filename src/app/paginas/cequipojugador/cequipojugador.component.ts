@@ -37,7 +37,6 @@ export class CequipojugadorComponent implements OnInit {
   ) {
 
     const idEquipoLogueado = this.loginService.getIdJugador()?.idEquipo;
-
     if (idEquipoLogueado !== undefined) {
       this.equiposervice.GetEquipoById(idEquipoLogueado).subscribe(
         (data) => {
@@ -60,7 +59,7 @@ export class CequipojugadorComponent implements OnInit {
     this.listaservice.GetJugadorByIdGeneroE(this.idGeneroE).subscribe(
       (data) => {
         this.jugadores = data;
-        this.jugadoresOriginal =data;
+        this.jugadoresOriginal = data;
         this.spinner.hide(); // Ocultar spinner después de obtener los datos
       },
       (error) => {

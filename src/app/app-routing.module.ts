@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'paginas/contacto', component: ContactoComponent  },
   { path: 'paginas/principal', component: PrincipalComponent, canActivate: [GuardAuthGuard], data: { roles: [1,2] } },
   { path: 'paginas/conectar', component: ConectarComponent, canActivate: [GuardAuthGuard], data: { roles: [2] } },
-  { path: 'paginas/perfil', component: PerfilComponent , canActivate: [GuardAuthGuard], data: { roles: [1,2] } },
+  { path: 'paginas/perfil/:id', component: PerfilComponent , canActivate: [GuardAuthGuard], data: { roles: [1,2] } },
   { path: 'paginas/perfilequipo/:id', component: PerfilequipoComponent  , canActivate: [GuardAuthGuard], data: { roles: [2] } },
   { path: 'paginas/perfiljugador/:id', component: PerfiljugadorComponent  , canActivate: [GuardAuthGuard], data: { roles: [2] } },
   { path: 'paginas/crearperfilJ', component: CrearperfiljComponent , canActivate: [GuardAuthGuard], data: { roles: [2] } },

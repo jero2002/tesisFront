@@ -9,3 +9,15 @@
 .iconored:hover {
     color: rgb(208, 59, 59);
 }
+
+.fila-tabla:hover {
+    background-color: #4a0654;
+}
+
+.enviar {
+    color: rgb(22, 151, 22);
+}
+
+.enviar:hover {
+    color: rgb(50, 181, 50);
+}

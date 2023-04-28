@@ -41,3 +41,11 @@ export interface DTOJugadorByGenero{
     idPosicionNavigation: Posicion,
     idProvinciaNavigation: Provincia
 }
+
+export interface DTOJugadoresEquipo{
+    idEquipoJugador: number,
+    nombre: String,
+    celular: number,
+    edad: number,
+    posicion: string
+}

@@ -29,8 +29,8 @@ export class GuardAuthGuard implements CanActivate {
     const idJugadorEnUrl = route.params['id'];
     const idEquipoEnUrl = route.params['id'];
 
-    const idJugadorL = this.loginService.getUsuario()?.idJugador;
-    const idEquipoL = this.loginService.getUsuario()?.idEquipo;
+    const idJugadorL = this.loginService.getIdJugador()?.idJugador;
+    const idEquipoL = this.loginService.getIdJugador()?.idEquipo;
 
     
 
@@ -89,7 +89,7 @@ export class GuardAuthGuard implements CanActivate {
       return false;
     }   
 
-    if (idEquipoL && url === 'paginas/cequipojugador') {
+    if (!idEquipoL && url === 'paginas/cequipojugador') {
       alertify.set('notifier', 'position', 'top-right');
       alertify.set('notifier','delay', 4);                              //Primero undefined
       alertify.error('Primero crea un equipo');
@@ -97,7 +97,7 @@ export class GuardAuthGuard implements CanActivate {
       this.router.navigate(['paginas/crearperfilC']);
     }
     
-    if (idJugadorL && url === 'paginas/cjugadorequipo') {
+    if (!idJugadorL && url === 'paginas/cjugadorequipo') {
       alertify.set('notifier', 'position', 'top-right');
       alertify.set('notifier','delay', 4);
       alertify.error('Primero crea un jugador');                        //Primero undefined

@@ -41,4 +41,8 @@ import { DTOEquipo, Equipo } from "src/app/models/i-equipo";
     PutEquipo(equipo: DTOEquipo): Observable<any> {
       return this.http.put(this.urlBase + "RegistrarE/PutEquipo", equipo, { headers: this.headers });
     }
+
+    GetEquiposjugador(id: number): Observable<any> {
+      return this.http.get(this.urlBase + "RegistrarE/GetEquiposjugador/" + id, { headers: this.headers });
+    }
   }

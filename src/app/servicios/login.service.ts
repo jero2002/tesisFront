@@ -22,6 +22,7 @@ export class LoginService {
   private currentUser!: Login | null;
   private currenU!:Login;
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private isLocalStorageUpdating = false; 
  
   constructor(private http: HttpClient, private router: Router, private authService: AuthService,private userservice: UsuarioService) { }
 
@@ -93,6 +94,8 @@ export class LoginService {
     if (userId !== undefined) {
       this.userservice.GetUsuarioByID(userId).subscribe({
         next: (user: UsuarioDTOUpdate) => {
+          console.log("prueba");
+          console.log('user',user);
           const userLocalStorage: UserLocalStorage = {
             idUsuario: user.idUsuario,
             email: user.email,

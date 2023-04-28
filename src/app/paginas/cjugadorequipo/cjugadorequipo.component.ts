@@ -97,4 +97,6 @@ export class CjugadorequipoComponent implements OnInit {
     this.cerrarjugadorModalBtn.nativeElement.click();
   }
 
+  
+
 }

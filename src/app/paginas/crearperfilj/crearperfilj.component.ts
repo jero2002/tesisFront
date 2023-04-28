@@ -61,11 +61,7 @@ export class CrearperfiljComponent implements OnInit {
     this.jugadorservice.GetGenero().subscribe({
       next: (resultado: any) => { this.genero = resultado; this.spinner.hide(); },
       error: (e: any) => {
-        Swal.fire({
-          title: "¡Error!",
-          text: e.error,
-          confirmButtonColor: '#2c5672'
-        });
+    
       this.spinner.hide();
       }
     })
@@ -73,47 +69,40 @@ export class CrearperfiljComponent implements OnInit {
     this.jugadorservice.GetProvincias().subscribe({
       next: (resultado: any) => { this.provincia = resultado; this.spinner.hide(); },
       error: (e: any) => {
-        Swal.fire({
-          title: "¡Error!",
-          text: e.error,
-          confirmButtonColor: '#2c5672'
-        });
+  
       this.spinner.hide();
       }
     })
     this.jugadorservice.GetPosicion().subscribe({
       next: (resultado: any) => { this.posicion = resultado; this.spinner.hide(); },
       error: (e: any) => {
-        Swal.fire({
-          title: "¡Error!",
-          text: e.error,
-          confirmButtonColor: '#2c5672'
-        });
+      
       this.spinner.hide();
       }
     })
   }
 
   CrearJ() {
-  
+
+    this.spinner.show();
     if (this.form.valid) {
       const jugador = this.form.value;
       this.jugadorservice.PostRegistroJ(jugador).subscribe({
         next: (resultado: any) => {
-   
-          alertify.set('notifier', 'position', 'top-right');
-          alertify.set('notifier','delay', 4);
-          alertify.success(resultado.message);
-
-          this.spinner.show();
+          
           this.loginService.updateCurrentUserInLocalStorage(); // Llama al método para actualizar el usuario en el localStorage
-       
-       
+
+
           setTimeout(() => {
             const idJugador = this.loginService.getIdJugador()?.idJugador;
             this.router.navigate([`paginas/perfiljugador/${idJugador}`]);
             this.spinner.hide();
-          }, 500); // Espera un segundo antes de navegar a la página de perfil del jugador
+          }, 1000);
+          
+          alertify.set('notifier', 'position', 'top-right');
+          alertify.set('notifier','delay', 4);
+          alertify.success(resultado.message);
+         
         },
         error: (e: any) => { alert(e.error); console.log(e); }
       });

@@ -85,13 +85,16 @@ export class SidenavComponent implements OnInit {
   desloguear(): void {
     Swal.fire({
       title: '¿Estás seguro?',
-      text: 'Estás a punto de cerrar sesión.',
+      background:"#99749f",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí, cerrar sesión',
-      cancelButtonText: 'Cancelar'
+      cancelButtonText: 'Cancelar',
+      customClass: {
+        title: 'text-white',
+      }
     }).then((result) => {
       if (result.value) {
         this.loginService.desloguearUsuario();
@@ -107,6 +110,15 @@ export class SidenavComponent implements OnInit {
       this.route.navigate([`/paginas/perfiljugador/${idJugador}`]);
     } else {
       this.route.navigate(['/paginas/crearperfilJ']);
+    }
+  }
+
+  Vperfil() {
+    const idusuario = this.loginService.getIdJugador()?.idUsuario;
+    if (idusuario !== null) {
+      this.route.navigate([`/paginas/perfil/${idusuario}`]);
+    } else {
+      this.route.navigate(['**']);
     }
   }
   

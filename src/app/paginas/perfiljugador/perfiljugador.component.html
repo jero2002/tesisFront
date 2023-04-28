@@ -91,8 +91,34 @@
                     <i [matTooltipPosition]="'above'" style="margin-left: 4px; color: #920AA6;" matTooltip="Aqui se muestran los equipos a los que perteneces" [matTooltipShowDelay]="500" type="button" class="fa-solid fa-circle-info"></i>
                 </h6>
                 <hr>
-                <div class="card cardP " style="border-radius: 10px;">
-
+                <div class="card cardP">
+                    <div class="table-responsive">
+                        <table class="table mtc-5 table-sm">
+                            <thead>
+                                <tr class="sidecolor text-center">
+                                    <th>Equipo</th>
+                                    <th>Entrenador</th>
+                                    <th>Torneos Ganados</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody class="sidecolor text-center">
+                                <tr *ngFor="let equipo of equipos" class="fila-tabla">
+                                    <td>{{equipo.nombre}}</td>
+                                    <td>{{equipo.entrenador}}</td>
+                                    <td>{{equipo.torneoGanado}}</td>
+                                    <td>
+                                        <a matTooltip="Enviar mensaje por whatsapp" [matTooltipShowDelay]="1100" href="https://wa.me/{{equipo.celular}}" style="font-size: 25px; margin: auto; margin-right: 8px;">
+                                            <i type="button" class="fa-brands fa-whatsapp enviar"></i>
+                                        </a>
+                                        <a (click)="eliminar(equipo.idEquipoJugador)" type="button" [matTooltipShowDelay]="1100" matTooltip="Eliminar equipo" style="font-size: 22px; margin: auto;" class="iconored">
+                                            <i class="fa-solid fa-circle-xmark"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

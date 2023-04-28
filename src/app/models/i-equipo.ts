@@ -36,3 +36,14 @@ export interface DTOEquipoByGenero{
     idEstadoENavigation: Estadoe,
     idProvinciaNavigation: Provincia
 }
+
+export interface DTOEquiposjugador{
+    idEquipoJugador: number,
+    nombre: String,
+    celular: number,
+    torneoGanado: number,
+    entrenador: string,
+    idEstadoE: number,
+    idGeneroE: number,
+    idProvincia: number  
+}

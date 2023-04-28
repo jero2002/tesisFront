@@ -54,4 +54,13 @@ export class JugadorService {
     return this.http.put(this.urlBase + "RegistrarJ/PutJugador", jugador, { headers: this.headers });
   }
 
+  
+  GetJugadoresequipo(id: number): Observable<any> {
+    return this.http.get(this.urlBase + "RegistrarJ/GetJugadoresequipo/" + id, { headers: this.headers });
+  }
+
+  DeleteEquipoJugador(id: number): Observable<any> {
+    return this.http.delete(this.urlBase + "RegistrarJ/DeleteEquipoJugador/" + id, { headers: this.headers });
+  }
+
 }

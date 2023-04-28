@@ -9,11 +9,10 @@ export interface UsuarioDTOUpdate{
     email: string;
     contrasenia: string;
     nombre: string;
-    rol: number; //Este en realidad tiene que ser number
+    rol: number; 
     idJugador:number; 
     idEquipo:number;
     token: string;
-    
 }
 
 export interface UserLocalStorage {
@@ -30,5 +29,7 @@ export interface UserLocalStorage {
     error: string
     codigoEstado: number;
   }
+
+
 
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Estadoe } from 'src/app/models/i-estadoe';
@@ -89,22 +89,21 @@ export class CrearperfilcComponent implements OnInit {
       const equipo = this.form.value;
       this.equiposervice.PostRegistroE(equipo).subscribe({
         next: (resultado: any) => {
-          
-          alertify.set('notifier', 'position', 'top-right');
-          alertify.set('notifier','delay', 4);
-          alertify.success(resultado.message);
 
-          this.spinner.show();
           this.loginService.updateCurrentUserInLocalStorage(); // Llama al método para actualizar el usuario en el localStorage
        
          
           setTimeout(() => {
-            
             const idEquipo = this.loginService.getIdJugador()?.idEquipo;
             this.router.navigate([`paginas/perfilequipo/${idEquipo}`]);
             this.spinner.hide();
   
-          }, 500); // Espera un segundo antes de navegar a la página de perfil del equipo
+          }, 1000); 
+
+          alertify.set('notifier', 'position', 'top-right');
+          alertify.set('notifier','delay', 4);
+          alertify.success(resultado.message);
+          // Espera un segundo antes de navegar a la página de perfil del equipo
         },
         error: (e: any) => { alert(e.error); console.log(e); }
       });
