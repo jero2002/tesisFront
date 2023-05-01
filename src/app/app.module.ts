@@ -37,7 +37,7 @@ import { AuthService } from './servicios/auth.service';
 import { CjugadorequipoComponent } from './paginas/cjugadorequipo/cjugadorequipo.component';
 import { CequipojugadorComponent } from './paginas/cequipojugador/cequipojugador.component';
 import {MatCardModule} from '@angular/material/card';
-
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 
@@ -85,6 +85,7 @@ export function tokenGetter() {
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     MatTooltipModule,
     MatCardModule,
+    NgxChartsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

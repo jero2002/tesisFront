@@ -1,14 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
-
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
-
-
-import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/app/environments/environments';
-import { Login } from 'src/app/models/i-login';
+
 
 
 
@@ -31,6 +26,10 @@ export class ReporteService {
 
   GetReporteJugadoresxProvincia(): Observable<any> {
     return this.http.get(this.url + "Reportes/jugadoresporprovincia", { headers: this.headers })
+}
+
+GetReporteJugadoresxPosicion(): Observable<any> {
+  return this.http.get(this.url + "Reportes/jugadoresporposicion", { headers: this.headers })
 }
 
 

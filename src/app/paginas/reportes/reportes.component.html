@@ -1,1 +1,30 @@
-<p>reportes works!</p>
+<div class="container">
+    <div class="jumbtron">
+        <div class="row">
+            <div class="col-4 py-5">
+                <h3 class="py-2 text-center">REPORTES:</h3>
+                <hr>
+                <div class="d-grid py-1" style="width: 80%; margin-left: 9%;">
+                    <button class="btn btnLogin" type="button" (click)="cargarReporte('jugadores')">Jugadores por provincia</button>
+                </div>
+                <div class="d-grid py-1" style="width: 80%; margin-left: 9%;">
+                    <button class="btn btnLogin" type="button" (click)="cargarReporte('posiciones')">Posiciones en búsqueda</button>
+                </div>
+            </div>
+            <div class="col-8 py-5">
+                <ng-container *ngIf="reporteSeleccionado === 'jugadores'">
+                    <h3 class="py-2 text-center">JUGADORES POR PROVINCIA</h3>
+                    <hr>
+                    <div class="table-responsive">
+                        <ngx-charts-bar-vertical [view]="view" [results]="data" [gradient]="gradient" [legend]="showLegend" (select)="onSelect($event)"></ngx-charts-bar-vertical>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="reporteSeleccionado === 'posiciones'">
+                    <h3 class="py-2 text-center">POSICIONES EN BÚSQUEDA</h3>
+                    <hr>
+                    <ngx-charts-bar-vertical [view]="view" [results]="data" [gradient]="gradient" [legend]="showLegend" (select)="onSelect($event)"></ngx-charts-bar-vertical>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
