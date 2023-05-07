@@ -28,7 +28,7 @@
                         <mat-card-actions class="icon-container" style="margin-left: 75%;">
                             <button data-bs-toggle="modal" data-bs-target="#jugadorModal" data-bs-whatever="@mdo" #abrirModeljugadorBtn hidden="true"></button>
                             <i matTooltip="Mas detalles" [matTooltipShowDelay]="1100" type="button" class="fa-solid fa-eye ojo" (click)="Mostrar(jugador.idJugador)"></i>
-                            <i type="button" matTooltip="Enviar solicitud" [matTooltipShowDelay]="1100" class="fa-solid fa-paper-plane enviar" style="margin-left: 15%;"></i>
+                            <i type="button" matTooltip="Enviar solicitud" [matTooltipShowDelay]="1100" class="fa-solid fa-paper-plane enviar" style="margin-left: 15%;" (click)="CrearNotificacionEquipoJugador(jugador.idJugador)"></i>
                         </mat-card-actions>
                     </mat-card>
                 </div>

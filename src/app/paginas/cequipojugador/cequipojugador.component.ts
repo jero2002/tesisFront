@@ -8,6 +8,8 @@ import { LoginService } from 'src/app/servicios/login.service';
 import { EquipoService } from 'src/app/servicios/servicioeyj/equipo.service';
 import { Observable } from 'rxjs';
 import { JugadorService } from 'src/app/servicios/servicioeyj/jugador.service';
+import { NotificacionService } from 'src/app/servicios/conectar/notificacion.service';
+declare var alertify: any;
 
 @Component({
   selector: 'app-cequipojugador',
@@ -17,6 +19,7 @@ import { JugadorService } from 'src/app/servicios/servicioeyj/jugador.service';
 export class CequipojugadorComponent implements OnInit {
 
   idGeneroE: number = 0; // Declarar la variable aquí
+  idEquipo: number = 0;
   jugadores: DTOJugadorByGenero[] = [];
   jugadoresOriginal: DTOJugadorByGenero[] = [];
   jugador = {} as Jugador;
@@ -33,7 +36,8 @@ export class CequipojugadorComponent implements OnInit {
     private equiposervice: EquipoService,
     private jugadoreservice: JugadorService,
     private listaservice: ListaService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private notificacions: NotificacionService
   ) {
 
     const idEquipoLogueado = this.loginService.getIdJugador()?.idEquipo;
@@ -41,6 +45,7 @@ export class CequipojugadorComponent implements OnInit {
       this.equiposervice.GetEquipoById(idEquipoLogueado).subscribe(
         (data) => {
           this.idGeneroE = data.idGeneroE;
+          this.idEquipo = idEquipoLogueado;
           this.cargarJugador(); // Llamar a cargarJugador() después de obtener idGeneroE
         },
         (error) => {
@@ -53,6 +58,23 @@ export class CequipojugadorComponent implements OnInit {
   ngOnInit(): void {
   
   }
+
+  CrearNotificacionEquipoJugador(id:number) {
+    this.notificacions.postNotificacionEquipoxJugador(this.idEquipo,id).subscribe({
+      next: (resultado: any) => {
+        if(resultado.ok == true){
+          alertify.set('notifier', 'position', 'top-right');
+          alertify.set('notifier','delay', 4);
+          alertify.success(resultado.message);
+        } else {
+          alertify.set('notifier', 'position', 'top-right');
+          alertify.set('notifier','delay', 4);
+          alertify.error(resultado.message);
+        }
+      },
+      error: (e: any) => { console.log(e); }
+    }); 
+}
 
   cargarJugador() {
     this.spinner.show();

@@ -4,9 +4,11 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { DTOEquipoByGenero, Equipo } from 'src/app/models/i-equipo';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { ListaService } from 'src/app/servicios/conectar/lista.service';
+import { NotificacionService } from 'src/app/servicios/conectar/notificacion.service';
 import { LoginService } from 'src/app/servicios/login.service';
 import { EquipoService } from 'src/app/servicios/servicioeyj/equipo.service';
 import { JugadorService } from 'src/app/servicios/servicioeyj/jugador.service';
+declare var alertify: any;
 
 @Component({
   selector: 'app-cjugadorequipo',
@@ -16,6 +18,7 @@ import { JugadorService } from 'src/app/servicios/servicioeyj/jugador.service';
 export class CjugadorequipoComponent implements OnInit {
 
   idGeneroJ: number = 0; // Declarar la variable aquí
+  idjugador: number = 0;
 
   equipos: DTOEquipoByGenero[] = [];
   equipo = {} as Equipo;
@@ -31,7 +34,8 @@ export class CjugadorequipoComponent implements OnInit {
     private equiposervice: EquipoService,
     private jugadorervice: JugadorService,
     private listaservice: ListaService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private notificacions: NotificacionService
   ) {
 
     const idJugadorLogueado = this.loginService.getIdJugador()?.idJugador;
@@ -40,6 +44,7 @@ export class CjugadorequipoComponent implements OnInit {
       this.jugadorervice.GetJugadorById(idJugadorLogueado).subscribe(
         (data) => {
           this.idGeneroJ = data.idGenero;
+          this.idjugador = idJugadorLogueado;
           this.cargarEquipo(); // Llamar a cargarJugador() después de obtener idGeneroE
         },
         (error) => {
@@ -49,9 +54,33 @@ export class CjugadorequipoComponent implements OnInit {
     }
   }
 
+
+
+
   ngOnInit(): void {
   console.log(this.loginService.getIdJugador()?.idJugador);
   }
+
+  CrearNotificacionJugadorEquipo(id:number) {
+      this.notificacions.postNotificacionJugadorxEquipo(this.idjugador,id).subscribe({
+        next: (resultado: any) => {
+          if(resultado.ok == true){
+            alertify.set('notifier', 'position', 'top-right');
+            alertify.set('notifier','delay', 4);
+            alertify.success(resultado.message);
+          } else {
+            alertify.set('notifier', 'position', 'top-right');
+            alertify.set('notifier','delay', 4);
+            alertify.error(resultado.message);
+          }
+        },
+        error: (e: any) => { console.log(e); }
+      }); 
+  }
+
+
+
+
 
   cargarEquipo() {
     this.spinner.show();

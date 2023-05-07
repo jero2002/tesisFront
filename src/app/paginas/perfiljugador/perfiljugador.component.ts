@@ -31,9 +31,7 @@ export class PerfiljugadorComponent {
   genero:Genero[]=[];
 
   constructor(private formBuilder: FormBuilder, private params: ActivatedRoute,public loginService: LoginService,  private spinner: NgxSpinnerService,private router: Router,private authservice: AuthService, private jugadorservice:JugadorService, private equiposervice:EquipoService) { 
-    this.idJugador = this.params.snapshot.params["id"];
-
-   
+    this.idJugador = this.params.snapshot.params["id"];   
   }
 
   ngOnInit(): void {

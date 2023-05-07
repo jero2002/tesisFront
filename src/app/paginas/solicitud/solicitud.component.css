@@ -1,0 +1,30 @@
+.cardP {
+    background: #42054b;
+}
+
+.iconored {
+    color: rgb(213, 30, 30);
+}
+
+.iconored:hover {
+    color: rgb(208, 59, 59);
+    transform: scale(1.2);
+}
+
+.enviar {
+    color: rgb(22, 151, 22);
+}
+
+.enviar:hover {
+    color: rgb(50, 181, 50);
+    transform: scale(1.2);
+}
+
+.ojo {
+    color: rgb(41, 41, 186);
+}
+
+.ojo:hover {
+    color: rgb(52, 52, 191);
+    transform: scale(1.2);
+}
