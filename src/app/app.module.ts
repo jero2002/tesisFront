@@ -41,6 +41,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 
+
 registerLocaleData(localeEs, 'es-AR');
 export function tokenGetter() {
   return localStorage.getItem('token');

@@ -46,8 +46,6 @@ export class SidenavComponent implements OnInit {
     media: MediaMatcher,
     private route: Router,
     private authService: AuthService,
-    private spinner: NgxSpinnerService, 
-    private notificacionservice: NotificacionService
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();

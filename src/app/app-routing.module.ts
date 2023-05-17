@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: 'paginas/cequipojugador', component: CequipojugadorComponent , canActivate: [GuardAuthGuard], data: { roles: [2] } },
   { path: 'paginas/cjugadorequipo', component: CjugadorequipoComponent , canActivate: [GuardAuthGuard], data: { roles: [2] } },
   { path: 'paginas/solicitud', component: SolicitudComponent , canActivate: [GuardAuthGuard], data: { roles: [2] } },
-  { path: 'paginas/reporte', component: ReportesComponent, canActivate: [GuardAuthGuard], data: { roles: [1] } },
+  { path: 'paginas/reporte', component: ReportesComponent, canActivate: [GuardAuthGuard], data: { roles: [1,2] } },
   { path: '**', component: MenuComponent }
 ];
 

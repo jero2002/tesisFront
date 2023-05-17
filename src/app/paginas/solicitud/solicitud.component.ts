@@ -83,6 +83,7 @@ postEquipo(idEquipo:number, idNotificaciones:number){
       this.notificacionesej = data; // Asignar el objeto del jugador a la variable
       this.spinner.hide();
     });
+    this.spinner.hide();
   }
 
   MostrarNotificacionEquipo() {
@@ -91,6 +92,7 @@ postEquipo(idEquipo:number, idNotificaciones:number){
       this.notificaciones = data; // Asignar el objeto del jugador a la variable
       this.spinner.hide();
     });
+    this.spinner.hide();
   }
 
   eliminarNotEj(id:number){

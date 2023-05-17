@@ -32,5 +32,23 @@ GetReporteJugadoresxPosicion(): Observable<any> {
   return this.http.get(this.url + "Reportes/jugadoresporposicion", { headers: this.headers })
 }
 
+GetCantidadJugadores(): Observable<any> {
+  return this.http.get(this.url + "Reportes/cantidadjugadores", { headers: this.headers })
+}
+GetCantidadEquipos(): Observable<any> {
+  return this.http.get(this.url + "Reportes/cantidadequipos", { headers: this.headers })
+}
+
+GetEdadPromedio(id: number): Observable<any> {
+  return this.http.get(this.url + "Reportes/EdadPromedioPorIdEquipo/" + id, { headers: this.headers })
+}
+
+GetJugadoresPorProvincia(id: number): Observable<any> {
+  return this.http.get(this.url + "Reportes/JugadoresXProvincia/" + id, { headers: this.headers })
+}
+
+GetCantidadEquiposPorEstado(id: number): Observable<any> {
+  return this.http.get(this.url + "Reportes/cantidadEquiposXEstado/" + id, { headers: this.headers })
+}
 
 }

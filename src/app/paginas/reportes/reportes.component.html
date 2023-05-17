@@ -1,6 +1,6 @@
 <div class="container">
     <div class="jumbtron">
-        <div class="row">
+        <div class="row" *ngIf="this.userHasRole([1])">
             <div class="col-12 col-sm-4 py-5">
                 <h3 class="py-2 text-center">REPORTES:</h3>
                 <hr>
@@ -9,6 +9,9 @@
                 </div>
                 <div class="d-grid py-1" style="width: 80%; margin-left: 9%;">
                     <button class="btn btnLogin" type="button" (click)="cargarReporte('posiciones')">Posiciones en búsqueda</button>
+                </div>
+                <div class="d-grid py-1" style="width: 80%; margin-left: 9%;">
+                    <button class="btn btnLogin" type="button" (click)="cargarReporte('cantidad')">Registros totales</button>
                 </div>
             </div>
             <div class="col-12 col-sm-8 py-5">
@@ -26,7 +29,63 @@
                         <ngx-charts-bar-vertical [view]="view" [results]="data" [gradient]="gradient" [legend]="showLegend" (select)="onSelect($event)"></ngx-charts-bar-vertical>
                     </div>
                 </ng-container>
+                <ng-container *ngIf="reporteSeleccionado === 'cantidad'">
+                    <h3 class="py-2 text-center">REGISTROS TOTALES</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="card cardP col-md-5 text-center" style="margin: auto;">
+                            <h6 class="py-1">JUGADORES REGISTRADOS</h6>
+                            <p style="font-size: 60px; font-weight:400;">{{cantidadJ}}</p>
+                        </div>
+                        <div class="card cardP col-md-5 text-center" style="margin: auto;">
+                            <h6 class="py-1">EQUIPOS REGISTRADOS</h6>
+                            <p style="font-size: 60px; font-weight:400;">{{cantidad}}</p>
+                        </div>
+                    </div>
+                </ng-container>
             </div>
         </div>
+
+        <div class="row" *ngIf="this.userHasRole([2])">
+            <div class="col-12 col-sm-4 py-5">
+                <h3 class="py-2 text-center">REPORTES:</h3>
+                <hr>
+                <div class="d-grid py-1" style="width: 80%; margin-left: 9%;">
+                    <button class="btn btnLogin" type="button" (click)="cargarReporteC('edad')">Edad promedio de jugadores</button>
+                </div>
+                <div class="d-grid py-1" style="width: 80%; margin-left: 9%;">
+                    <button class="btn btnLogin" type="button" (click)="cargarReporteC('provincia')">Provincias en mi equipo</button>
+                </div>
+                <div class="d-grid py-1" style="width: 80%; margin-left: 9%;">
+                    <button class="btn btnLogin" type="button" (click)="cargarReporteC('estado')">Estado en mis equipos</button>
+                </div>
+            </div>
+            <div class="col-12 col-sm-8 py-5">
+                <ng-container *ngIf="reporteSeleccionadoC === 'edad'">
+                    <h3 class="py-2 text-center">EDAD PROMEDIO DE JUGADORES</h3>
+                    <hr>
+                    <div class="card cardP col-md-5 text-center" style="margin: auto;">
+                        <p style="font-size: 90px; font-weight:400;">{{edad}}</p>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="reporteSeleccionadoC === 'provincia'">
+                    <h3 class="py-2 text-center">PROVINCIAS EN MI EQUIPO</h3>
+                    <hr>
+                    <div class="table-responsive">
+                        <ngx-charts-bar-vertical [view]="view" [results]="data" [gradient]="gradient" [legend]="showLegend" (select)="onSelect($event)"></ngx-charts-bar-vertical>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="reporteSeleccionadoC === 'estado'">
+                    <h3 class="py-2 text-center">ESTADO DE MIS EQUIPOS</h3>
+                    <hr>
+                    <div class="table-responsive">
+                        <ngx-charts-bar-vertical [view]="view" [results]="data" [gradient]="gradient" [legend]="showLegend" (select)="onSelect($event)"></ngx-charts-bar-vertical>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+
+
     </div>
 </div>

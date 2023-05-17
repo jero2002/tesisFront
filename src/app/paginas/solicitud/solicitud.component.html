@@ -14,8 +14,7 @@
                 <div class="" *ngFor="let not of notificacionesej">
                     <div class="cardP" style="border-radius: 10px;  position: relative; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);">
                         <p style="margin-left: 10px;"><strong>{{not.nombre}}</strong> Te invitó a su equipo</p>
-                        <i (click)="postEquipo(not.idEquipo,not.idNotificacionEJ)" matTooltip="Aceptar" [matTooltipShowDelay]="1100" type="button" class="fa-solid fa-check enviar" style="position: absolute; top: 15%; right: 14%;"></i>
-                        <i matTooltip="Mas detalles" [matTooltipShowDelay]="1100" type="button" class="fa-solid fa-eye ojo" style="position: absolute; top: 15%; right: 7%;"></i>
+                        <i (click)="postEquipo(not.idEquipo,not.idNotificacionEJ)" matTooltip="Aceptar" [matTooltipShowDelay]="1100" type="button" class="fa-solid fa-check enviar" style="position: absolute; top: 15%; right: 7%;"></i>
                         <i (click)="eliminarNotEj(not.idNotificacionEJ)" matTooltip="Rechazar" [matTooltipShowDelay]="1100" type="button" class="fa-solid fa-xmark iconored" style="position: absolute; top: 15%; right: 2%; "></i>
                     </div>
                 </div>
@@ -30,8 +29,7 @@
                 <div class="" *ngFor="let not of notificaciones">
                     <div class="cardP" style="border-radius: 10px; position: relative; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);">
                         <p style="margin-left: 10px;"><strong>{{not.nombre}}</strong> Quiere entrar a tu equipo</p>
-                        <i (click)="postJugador(not.idJugador,not.idNotificacion)" matTooltip="Aceptar" [matTooltipShowDelay]="1100" type="button" class="fa-solid fa-check enviar" style="position: absolute; top: 15%; right: 14%;"></i>
-                        <i matTooltip="Mas detalles" [matTooltipShowDelay]="1100" type="button" class="fa-solid fa-eye ojo" style="position: absolute; top: 15%; right: 7%;"></i>
+                        <i (click)="postJugador(not.idJugador,not.idNotificacion)" matTooltip="Aceptar" [matTooltipShowDelay]="1100" type="button" class="fa-solid fa-check enviar" style="position: absolute; top: 15%; right: 7%;"></i>
                         <i (click)="eliminarNot(not.idNotificacion)" matTooltip="Rechazar" [matTooltipShowDelay]="1100" type="button" class="fa-solid fa-xmark iconored" style="position: absolute; top: 15%; right: 2%; "></i>
                     </div>
                 </div>

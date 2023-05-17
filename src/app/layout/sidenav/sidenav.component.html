@@ -38,7 +38,7 @@
                         <i class="fa-solid fa-envelope sidecolor"></i><span class="sidecolor letraside"> Solicitudes </span>
                     </a>
                 </div>
-                <a mat-list-item routerLink="paginas/reporte" *ngIf="this.userHasRole([1])">
+                <a mat-list-item routerLink="paginas/reporte" *ngIf="this.userHasRole([1,2])">
                     <i class="fa-solid fa-signal sidecolor"></i><span class="sidecolor letraside"> Reportes </span>
                 </a>
                 <a mat-list-item (click)="desloguear();" class="inner-content">

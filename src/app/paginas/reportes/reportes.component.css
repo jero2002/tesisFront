@@ -1,0 +1,15 @@
+.cardP {
+    background: linear-gradient(to bottom right, #85578c, #8a3898);
+    height: 150px;
+    animation-name: fade-in;
+    animation-duration: 2s;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
